@@ -6,7 +6,10 @@ set -euo pipefail
 # we must create the directory, because it is not automatically created, even though
 # it is automatically added to the PATH (oddly).
 
-local_bin=${HOME}/.local/bin
+dot_local_dir=${HOME}/.local
 
-mkdir -p "${local_bin}"
-wget -qO- https://pixi.sh/install.sh | PIXI_HOME="${local_bin}" PIXI_NO_PATH_UPDATE=1 bash
+mkdir -p "${dot_local_dir}/bin"
+
+# Set PIXI_HOME to the *parent* directory of the desired "bin" directory because the
+# install.sh script automatically appends "/bin" to the PIXI_HOME value.
+wget -qO- https://pixi.sh/install.sh | PIXI_HOME="${dot_local_dir}" PIXI_NO_PATH_UPDATE=1 bash

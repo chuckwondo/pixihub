@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-export PIXI_HOME=${HOME}/.local/bin
+export PIXI_HOME=${HOME}/.local
 
 exec "$@"
