@@ -1,5 +1,0 @@
-#!/bin/bash
-
-export PIXI_HOME=${HOME}/.local
-
-exec "$@"
