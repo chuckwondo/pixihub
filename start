@@ -1,3 +1,5 @@
 #!/usr/bin/env -S bash -l
 
 export PIXI_HOME=${HOME}/.local/bin
+
+exec "$@"
