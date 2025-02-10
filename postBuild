@@ -1,10 +1,12 @@
 #!/usr/bin/env -S bash -l
 
+set -euo pipefail
+
 # Since ~/.local/bin is automatically added to the PATH, we'll install pixi there, but
 # we must create the directory, because it is not automatically created, even though
 # it is automatically added to the PATH (oddly).
 
-export PIXI_HOME=${HOME}/.local/bin
+local_bin=${HOME}/.local/bin
 
-mkdir -p "${PIXI_HOME}"
-wget -qO- https://pixi.sh/install.sh | PIXI_NO_PATH_UPDATE=1 bash
+mkdir -p "${local_bin}"
+wget -qO- https://pixi.sh/install.sh | PIXI_HOME="${local_bin}" PIXI_NO_PATH_UPDATE=1 bash
