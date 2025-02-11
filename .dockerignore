@@ -1,1 +1,4 @@
 *
+!environment.yml
+!postBuild
+!start
