@@ -1,8 +1,8 @@
 #!/bin/bash
 
-export PIXI_HOME=${HOME}/.local
+# Remove self upon exit so we don't clutter the home directory.
+trap 'rm -f "${HOME}/start"' EXIT
 
-rm -f "${HOME}/environment.yml"
-rm -f "${HOME}/postBuild"
+export PIXI_HOME=${HOME}/.local
 
 exec "$@"
