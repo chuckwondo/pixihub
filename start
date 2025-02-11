@@ -2,4 +2,7 @@
 
 export PIXI_HOME=${HOME}/.local
 
+rm -f "${HOME}/environment.yml"
+rm -f "${HOME}/postBuild"
+
 exec "$@"
