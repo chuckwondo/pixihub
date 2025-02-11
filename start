@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo "Hello world!"
+export PIXI_HOME=${HOME}/.local
 
 exec "$@"
