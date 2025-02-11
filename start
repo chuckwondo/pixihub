@@ -1,8 +1,11 @@
 #!/bin/bash
 
-# Remove self upon exit so we don't clutter the home directory.
-trap 'rm -f "${HOME}/start"' EXIT
-
 export PIXI_HOME=${HOME}/.local
+
+# Remove self upon call to exec so we don't clutter the home directory.
+# Since exec does not start a new process, calling it does not cause an EXIT
+# pseudo-signal for this script, which is why we use DEBUG instead, and set the
+# trap as the very last thing we do before calling exec.
+trap 'rm -f "${HOME}/start"' DEBUG
 
 exec "$@"
