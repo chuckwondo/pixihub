@@ -21,3 +21,9 @@ mkdir -p "${dot_local_dir}/bin"
 # Set PIXI_HOME to the *parent* directory of the desired "bin" directory because the
 # install.sh script automatically appends "/bin" to the PIXI_HOME value.
 wget -qO- https://pixi.sh/install.sh | PIXI_HOME="${dot_local_dir}" PIXI_NO_PATH_UPDATE=1 bash
+
+# Install AWS CLI
+wget -qO- https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip >awscliv2.zip
+unzip awscliv2.zip
+aws/install --install-dir "${HOME}/.local/share/aws-cli" --bin-dir "${HOME}/.local/bin"
+rm -rf awscliv2.zip aws # Remove zip file as well as unzipped directory
