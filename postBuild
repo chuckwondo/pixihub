@@ -4,22 +4,22 @@ set -euo pipefail
 
 function cleanup() {
     rm -rf \
-        "${HOME}/environment.yml" \
-        "${HOME}/postBuild" \
+        aws \
         awscliv2.zip \
-        aws
+        environment.yml \
+        Manifest.toml \
+        postBuild \
+        Project.toml
 }
 
 # Remove build files upon exit so we don't clutter the home directory.
-trap cleanup EXIT
+trap 'cleanup' EXIT
 
 # Since ~/.local/bin is automatically added to the PATH, we'll install pixi there, but
 # we must create the directory, because it is not automatically created, even though
 # it is automatically added to the PATH (oddly).
 
 dot_local_dir=${HOME}/.local
-
-mkdir -p "${dot_local_dir}/bin"
 
 # Set PIXI_HOME to the *parent* directory of the desired "bin" directory because the
 # install.sh script automatically appends "/bin" to the PIXI_HOME value.
