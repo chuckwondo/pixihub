@@ -1,4 +1,6 @@
 *
 !environment.yml
+!Manifest.toml
 !postBuild
+!Project.toml
 !start
