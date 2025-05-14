@@ -1,14 +1,13 @@
 #!/bin/bash
 
-set -euo pipefail
+set -xeuo pipefail
 
 function cleanup() {
-    rm -f "${HOME}/environment.yml"
     rm -f "${HOME}/postBuild"
 }
 
 # Remove build files upon exit so we don't clutter the home directory.
-trap cleanup EXIT
+#trap cleanup EXIT
 
 # Since ~/.local/bin is automatically added to the PATH, we'll install pixi there, but
 # we must create the directory, because it is not automatically created, even though
