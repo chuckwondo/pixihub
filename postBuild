@@ -13,7 +13,7 @@ bindx2_home=${src_home}/gmcgarragh/bindx2
 mkdir -p "${bindx2_home}"
 git clone https://github.com/gmcgarragh/bindx2 "${bindx2_home}"
 cp "${bindx2_home}"/make.inc{.example,}
-make -C "${bindx2_home}"
+# make -C "${bindx2_home}"
 
 # Set PIXI_HOME to the *parent* directory of the desired "bin" directory because the
 # install.sh script automatically appends "/bin" to the PIXI_HOME value.
