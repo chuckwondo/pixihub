@@ -8,20 +8,13 @@ set -xeuo pipefail
 dot_local_dir=${HOME}/.local
 mkdir -p "${dot_local_dir}"
 
-src_home=${dot_local_dir}/share
-bindx2_home=${src_home}/gmcgarragh/bindx2
-mkdir -p "${bindx2_home}"
-git clone https://github.com/gmcgarragh/bindx2 "${bindx2_home}"
-cp "${bindx2_home}"/make.inc{.example,}
-# make -C "${bindx2_home}"
-
 # Set PIXI_HOME to the *parent* directory of the desired "bin" directory because the
 # install.sh script automatically appends "/bin" to the PIXI_HOME value.
 wget -qO- https://pixi.sh/install.sh | PIXI_HOME="${dot_local_dir}" PIXI_NO_PATH_UPDATE=1 bash
 
 # Install AWS CLI
 wget -qO- https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip >awscliv2.zip
-unzip awscliv2.zip
+unzip -q awscliv2.zip
 aws/install --install-dir "${dot_local_dir}/share/aws-cli" --bin-dir "${dot_local_dir}/bin"
 
 # Cleanup HOME directory
